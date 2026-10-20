@@ -1,0 +1,47 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe 编译全部源文件",
+            "command": "C:\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-Wall",
+                "-g",
+                "${fileDirname}\\*.c",
+                "-o",
+                "${fileDirname}\\${workspaceFolderBasename}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译项目内全部 .c 文件（多文件项目必须一起编译才能链接成功）"
+        },
+        {
+            "label": "编译并在独立控制台窗口运行",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "",
+                "${fileDirname}\\${workspaceFolderBasename}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "dependsOn": "C/C++: gcc.exe 编译全部源文件",
+            "dependsOrder": "sequence",
+            "detail": "先编译，再弹出一个真正的 conhost 控制台窗口运行（鼠标输入只有在这里才收得到）"
+        }
+    ],
+    "version": "2.0.0"
+}
